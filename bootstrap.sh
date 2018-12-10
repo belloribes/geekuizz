@@ -78,7 +78,8 @@ mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO '$DBUSER'@'%' IDENTIFIED 
 mysql -uroot -proot -e "DROP SCHEMA IF EXISTS $DBNAME;"
 mysql -uroot -proot -e "CREATE DATABASE $DBNAME;"
 
-echo "-- Import Mysql Dump --" 
+echo "-- Import Mysql Dump --"
+sudo ln -fs /vagrant/database/ /var/www/database
 if [ -f /var/www/database/$DBDUMP ]; then
   echo "-- Importing database --"
   mysql -uroot -proot $DBNAME < /var/www/database/$DBDUMP
